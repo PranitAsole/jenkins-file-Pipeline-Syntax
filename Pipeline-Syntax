@@ -1,0 +1,60 @@
+pipeline {
+    agent any
+    environment {
+        name = 'pranti'
+    }
+    parameters {
+        string(name: 'person', defaultValue: 'pranit asole', description: "who are you?")
+        booleanParam(name: 'itohk', defaultValue: true, description: "")
+        choice(name: 'City', choices: ['pulgaon','pune','nagpur'], description: "")
+    }
+    stages {
+        stage('run a command') {
+            steps {
+                sh '''
+                pwd
+                ls
+                ls -a
+                date
+                '''
+            }
+        }
+        stage('Enviroment Variables') {
+            steps {
+                sh 'echo "${BUILD_ID}"'
+                sh 'echo "${name}"'
+            }
+        }
+        stage('Parameters') {
+            steps {
+                sh 'echo "${BUILD_ID}"'
+                sh 'echo "${person}"'
+            }
+        }
+        stage('Continue ?') {
+            input {
+                message "do you want to contion"
+                ok "Yes"
+            }
+            steps {
+                echo 'deploy to prod'
+            }
+        }
+        stage('prod') {
+            steps {
+                echo 'deploy to prod'
+            }
+        }
+    }
+     post { 
+        always { 
+            echo 'I will always say Hello again!'
+        }
+        failure{
+            echo 'fail'
+        }
+        success{
+            echo 'success ohk'
+        }
+    }
+}
