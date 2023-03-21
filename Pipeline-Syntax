@@ -17,6 +17,7 @@ pipeline {
                 ls -a
                 date
                 '''
+                echo 'LAVDE'
             }
         }
         stage('Enviroment Variables') {
