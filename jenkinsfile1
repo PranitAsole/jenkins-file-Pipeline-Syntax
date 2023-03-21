@@ -4,17 +4,21 @@ pipeline{
             steps{
                 echo "========executing A========"
             }
-            stage("B"){
+             stage("B"){
             steps{
                 echo "========executing B========"
             }
-            stage("C"){
+             stage("C"){
             steps{
                 echo "========executing C========"
             }
-            stage("D"){
+             stage("D"){
             steps{
                 echo "========executing D========"
+            }
+             stage("E"){
+            steps{
+                echo "========executing E========"
             }
             post{
                 always{
@@ -29,4 +33,3 @@ pipeline{
             }
         }
     }
-  
