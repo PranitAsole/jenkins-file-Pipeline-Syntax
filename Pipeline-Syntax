@@ -18,6 +18,10 @@ pipeline {
                 date
                 '''
                 echo 'LAVDE'
+                sh '''pwd
+                cat
+                date'''
+                sh 'cal'
             }
         }
         stage('Enviroment Variables') {
